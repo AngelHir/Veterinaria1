@@ -2,6 +2,8 @@ package com.clases.usuario
 
 class Mascota {
 
+    boolean activo=true
+
     Cliente cliente
 
     String nombre

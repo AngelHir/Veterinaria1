@@ -1,18 +1,65 @@
 package com.clases.usuario
 
-import grails.gorm.services.Service
+import grails.converters.JSON
+import grails.gorm.transactions.Transactional
 
-@Service(Usuario)
-interface UsuarioService {
+@Transactional
+class UsuarioService {
 
-    Usuario get(Serializable id)
+    Usuario get(long id) {
+        return Usuario.get(id)
+    }
 
-    List<Usuario> list(Map args)
 
-    Long count()
+    def save(Usuario usuarioInstance) throws Exception {
+        if (usuarioInstance && usuarioInstance.validate()) {
+            usuarioInstance.save(flush: true)
+            return usuarioInstance
+        }
+        throw new Exception("Errores :${usuarioInstance.errors}")
+    }
 
-    void delete(Serializable id)
 
-    Usuario save(Usuario usuario)
+    def create(Map usuarioMap, Cliente clienteInstance) {
+        try {
+            Usuario usuarioInstance
+            usuarioInstance = new Usuario()
+            usuarioInstance.nombre = usuarioMap.nombre
+            usuarioInstance.cliente = clienteInstance
+            return this.save(usuarioInstance)
+        } catch (e) {
+            throw new Exception("Errores :${e.getMessage()}")
+        }
+
+    }
+
+
+    def update(Map usuarioMap){
+        try {
+            Usuario usuarioInstance
+            usuarioInstance = this.get(usuarioMap.id as long)
+            usuarioInstance.nombre = usuarioMap.nombre
+            this.save(usuarioInstance)
+        } catch(e) {
+            throw new Exception("Errores :${e.getMessage()}")
+        }
+
+    }
+
+    def delete(long id){
+        try {
+            Usuario usuarioInstance= this.get(id)
+            if (usuarioInstance) {
+                usuarioInstance.activo= false
+                this.save(usuarioInstance)
+                return usuarioInstance.id
+            } else {
+                throw new Exception("No existe con el id " + id)
+            }
+        } catch(e) {
+            throw new Exception("Errores :${e.getMessage()}")
+        }
+    }
+
 
 }

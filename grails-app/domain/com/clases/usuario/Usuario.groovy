@@ -4,6 +4,8 @@ class Usuario {
 
     static belongsTo = [cliente: Cliente]
 
+    boolean activo=true
+
     String nombre
 
     String contrasena

@@ -4,6 +4,8 @@ class Cliente {
 
     static hasMany = [usuario: Usuario]
 
+    boolean activo=true
+
     String nombre
 
     String apellido

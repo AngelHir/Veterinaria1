@@ -2,6 +2,8 @@ package com.clases.usuario
 
 class Venta {
 
+    boolean activo=true
+
     Cliente clientes
 
     Servicios servicio

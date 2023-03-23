@@ -2,6 +2,9 @@ package com.clases.usuario
 
 class DetalleDeVenta {
 
+    boolean activo=true
+
+
     Venta venta
 
     Date fecha
