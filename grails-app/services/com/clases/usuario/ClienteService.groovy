@@ -6,8 +6,10 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class ClienteService {
 
+    MascotaService mascotaService
+
     Cliente get(long id) {
-        return Autor.get(id)
+        return Cliente.get(id)
     }
 
     def show(long id) {
@@ -35,7 +37,7 @@ class ClienteService {
     }
 
 
-    def create(Map autorMap) {
+    def create(Map clienteMap) {
         try {
             Cliente clienteInstance
             clienteInstance = new Cliente()
@@ -50,13 +52,13 @@ class ClienteService {
     }
 
 
-    def update(Map autorMap){
+    def update(Map clienteMap){
         try {
             Cliente clienteInstance
-            clienteInstance = this.get(autorMap.id as long)
-            clienteInstance.editorial = autorMap.editorial
-            clienteInstance.ranking = autorMap.ranking as short
-            autorMap.libros.each {Map libroMap ->clienteInstance.addToLibros(libroService.create(libroMap,clienteInstance))}
+            clienteInstance = this.get(clienteMap.id as long)
+            clienteInstance.editorial = clienteMap.editorial
+            clienteInstance.ranking = clienteMap.ranking as short
+            clienteMap.mascotas.each {Map mascotaMap ->clienteInstance.addToMascotas(mascotaService.create(mascotaMap,clienteInstance))}
             this.save(clienteInstance)
         } catch(e) {
             throw new Exception("Errores :${e.getMessage()}")

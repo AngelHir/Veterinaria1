@@ -3,21 +3,22 @@ package com.clases.usuario
 import grails.converters.JSON
 
 
-class ClienteController {
+class MascotaController {
 
-    ClienteService clienteService
+    MascotaService mascotaService
 
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-
     def show(Long id) {
-        respond clienteService.get(id)
+        respond mascotaService.get(id)
     }
 
+
     def save() {
+        println params
         try {
-            clienteService.create(JSON.parse(request) as Map) as JSON
+            mascotaService.create(JSON.parse(request) as Map) as JSON
             Map result = [success: true]
             respond result
 
@@ -30,9 +31,9 @@ class ClienteController {
 
 
     def update () {
-
+        println params
         try {
-            render clienteService.update(JSON.parse(request) as Map) as JSON
+            render mascotaService.update(JSON.parse(request) as Map) as JSON
             Map result = [success: true]
             respond result
 
@@ -46,11 +47,12 @@ class ClienteController {
 
         println params
         try {
-            Map result = [success: clienteService.delete(id)]
+            Map result = [success: mascotaService.delete(id)]
             respond result
         } catch (Exception e) {
             Map error = [error: e.getMessage()]
             render error as JSON
         }
     }
+
 }
