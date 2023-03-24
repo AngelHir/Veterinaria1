@@ -2,7 +2,9 @@ package com.clases.usuario
 
 class Cliente {
 
-    static hasMany = [usuario: Usuario]
+    static hasOne = [usuario: Usuario]
+
+    static hasMany=[mascotas:Mascota]
 
     boolean activo=true
 

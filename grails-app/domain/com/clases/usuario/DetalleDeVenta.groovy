@@ -4,14 +4,13 @@ class DetalleDeVenta {
 
     boolean activo=true
 
+    static belongsTo = [venta:Venta]
 
-    Venta venta
+    Servicios servicios
 
-    Date fecha
+    Mascota mascota
 
     Float subtotal
-
-    Float total
 
     static constraints = {
     }

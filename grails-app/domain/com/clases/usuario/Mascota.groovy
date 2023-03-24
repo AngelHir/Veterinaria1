@@ -4,7 +4,7 @@ class Mascota {
 
     boolean activo=true
 
-    Cliente cliente
+    static belongsTo = [cliente:Cliente]
 
     String nombre
 

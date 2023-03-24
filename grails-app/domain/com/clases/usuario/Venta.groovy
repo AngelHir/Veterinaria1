@@ -4,9 +4,9 @@ class Venta {
 
     boolean activo=true
 
-    Cliente clientes
+    static hasMany = [detalles:DetalleDeVenta]
 
-    Servicios servicio
+    Cliente cliente
 
     Date fecha
 

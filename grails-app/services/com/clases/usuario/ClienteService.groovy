@@ -8,6 +8,8 @@ class ClienteService {
 
     MascotaService mascotaService
 
+    UsuarioService usuarioService
+
     Cliente get(long id) {
         return Cliente.get(id)
     }

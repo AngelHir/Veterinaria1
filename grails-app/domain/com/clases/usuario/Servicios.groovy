@@ -4,8 +4,6 @@ class Servicios {
 
     boolean activo=true
 
-    Cliente cliente
-
     String nombre
 
     String descripcion
