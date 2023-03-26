@@ -33,7 +33,7 @@ class UsuarioController {
     def update () {
         println params
         try {
-            render usuario.update(JSON.parse(request) as Map) as JSON
+            usuarioService.update(JSON.parse(request) as Map) as JSON
             Map result = [success: true]
             respond result
 

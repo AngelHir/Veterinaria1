@@ -1,6 +1,5 @@
 package com.clases.usuario
 
-import grails.converters.JSON
 import grails.gorm.transactions.Transactional
 
 @Transactional
@@ -12,20 +11,6 @@ class ClienteService {
 
     Cliente get(long id) {
         return Cliente.get(id)
-    }
-
-    def show(long id) {
-        try {
-            Cliente clienteInstance = clienteService.get(id)
-            if (clienteInstance) {
-                render clienteInstance as JSON
-            } else {
-                throw new Exception("No existe con el id " + id)
-            }
-        } catch (Exception e) {
-            Map error = [error: e.getMessage()]
-            render error as JSON
-        }
     }
 
 
@@ -65,7 +50,8 @@ class ClienteService {
             clienteInstance.telefono=clienteMap.telefono
             clienteInstance.email=clienteMap.email
             clienteInstance.direccion=clienteMap.direccion
-            clienteMap.mascotas.each {Map mascotaMap ->clienteInstance.addToMascotas(mascotaService.create(mascotaMap,clienteInstance))}
+            clienteMap.mascotas.each {Map mascotaMap
+                ->clienteInstance.addToMascotas(mascotaService.create(mascotaMap,clienteInstance))}
             this.save(clienteInstance)
         } catch(e) {
             throw new Exception("Errores :${e.getMessage()}")
