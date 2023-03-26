@@ -1,6 +1,5 @@
 package com.clases.usuario
 
-import grails.converters.JSON
 import grails.gorm.transactions.Transactional
 
 @Transactional
