@@ -43,9 +43,12 @@ class ClienteService {
         try {
             Cliente clienteInstance
             clienteInstance = new Cliente()
-            clienteInstance.pesona=personaService.create(autorMap)
-            clienteInstance.editorial = autorMap.editorial
-            clienteInstance.ranking = autorMap.ranking as short
+            clienteInstance.usuario=usuarioService.create(clienteMap)
+            clienteInstance.nombre = clienteMap.nombre
+            clienteInstance.apellido= clienteMap.apellido
+            clienteInstance.telefono=clienteMap.telefono
+            clienteInstance.email=clienteMap.email
+            clienteInstance.direccion=clienteMap.direccion
             this.save(clienteInstance)
         } catch (e) {
             throw new Exception("Errores :${e.getMessage()}")
@@ -58,8 +61,11 @@ class ClienteService {
         try {
             Cliente clienteInstance
             clienteInstance = this.get(clienteMap.id as long)
-            clienteInstance.editorial = clienteMap.editorial
-            clienteInstance.ranking = clienteMap.ranking as short
+            clienteInstance.nombre = clienteMap.nombre
+            clienteInstance.apellido= clienteMap.apellido
+            clienteInstance.telefono=clienteMap.telefono
+            clienteInstance.email=clienteMap.email
+            clienteInstance.direccion=clienteMap.direccion
             clienteMap.mascotas.each {Map mascotaMap ->clienteInstance.addToMascotas(mascotaService.create(mascotaMap,clienteInstance))}
             this.save(clienteInstance)
         } catch(e) {
