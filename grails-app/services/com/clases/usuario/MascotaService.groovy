@@ -25,6 +25,8 @@ class MascotaService {
             Mascota mascotaInstance
             mascotaInstance = new Mascota()
             mascotaInstance.nombre = mascotaMap.nombre
+            mascotaInstance.raza = mascotaMap.raza
+            mascotaInstance.peso = mascotaMap.peso as float
             mascotaInstance.cliente = clienteInstance
             return this.save(mascotaInstance)
         } catch (e) {
@@ -38,7 +40,9 @@ class MascotaService {
         try {
             Mascota mascotaInstance
             mascotaInstance = this.get(mascotaMap.id as long)
-            mascotaInstance.titulo = mascotaMap.titulo
+            mascotaInstance.nombre = mascotaMap.nombre
+            mascotaInstance.raza = mascotaMap.raza
+            mascotaInstance.peso = mascotaMap.peso as float
             this.save(mascotaInstance)
         } catch(e) {
             throw new Exception("Errores :${e.getMessage()}")

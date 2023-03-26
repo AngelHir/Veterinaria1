@@ -15,7 +15,6 @@ class ClienteService {
     }
 
     def show(long id) {
-        println params
         try {
             Cliente clienteInstance = clienteService.get(id)
             if (clienteInstance) {

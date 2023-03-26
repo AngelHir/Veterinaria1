@@ -20,13 +20,12 @@ class UsuarioService {
     }
 
 
-    def create(Map usuarioMap, Cliente clienteInstance) {
+    def create(Map usuarioMap) {
         try {
             Usuario usuarioInstance
             usuarioInstance = new Usuario()
             usuarioInstance.nombre = usuarioMap.nombre
             usuarioInstance.contrasena= usuarioMap.contrasena
-            usuarioInstance.cliente = clienteInstance
             return this.save(usuarioInstance)
         } catch (e) {
             throw new Exception("Errores :${e.getMessage()}")
@@ -62,6 +61,7 @@ class UsuarioService {
             throw new Exception("Errores :${e.getMessage()}")
         }
     }
+
 
 
 }
