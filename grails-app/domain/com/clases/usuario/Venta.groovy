@@ -8,6 +8,8 @@ class Venta {
 
     Cliente cliente
 
+    String folio
+
     Date fecha
 
     Float total
