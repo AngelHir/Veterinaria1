@@ -32,7 +32,7 @@ class ClienteService {
             clienteInstance.telefono=clienteMap.telefono
             clienteInstance.email=clienteMap.email
             clienteInstance.direccion=clienteMap.direccion
-            clienteInstance.usuario=usuarioService.create(clienteMap)
+            clienteInstance.usuario=usuarioService.create(clienteMap, clienteInstance)
             this.save(clienteInstance)
         } catch (e) {
             throw new Exception("Errores :${e.getMessage()}")
