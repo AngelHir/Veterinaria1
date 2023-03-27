@@ -6,7 +6,7 @@ class Cliente {
 
     boolean activo=true
 
-    static hasOne = [usuario:Usuario]
+    Usuario usuario
 
     String nombre
 

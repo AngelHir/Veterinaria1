@@ -2,9 +2,9 @@ package com.clases.usuario
 
 class Usuario {
 
-    static belongsTo = [cliente: Cliente]
-
     boolean activo=true
+
+    static belongsTo = [cliente:Cliente]
 
     String usuario
 
