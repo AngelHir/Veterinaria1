@@ -6,7 +6,7 @@ class Usuario {
 
     boolean activo=true
 
-    String nombre
+    String usuario
 
     String contrasena
 

@@ -24,7 +24,7 @@ class UsuarioService {
         try {
             Usuario usuarioInstance
             usuarioInstance = new Usuario()
-            usuarioInstance.nombre = usuarioMap.nombre
+            usuarioInstance.usuario = usuarioMap.usuario
             usuarioInstance.contrasena= usuarioMap.contrasena
             return this.save(usuarioInstance)
         } catch (e) {
@@ -34,13 +34,14 @@ class UsuarioService {
     }
 
 
-    def update(Map usuarioMap){
+    def update(Map usuarioMap, Cliente clienteInstance){
         try {
             Usuario usuarioInstance
             usuarioInstance = this.get(usuarioMap.id as long)
-            usuarioInstance.nombre = usuarioMap.nombre
+            usuarioInstance.usuario = usuarioMap.usuario
             usuarioInstance.contrasena= usuarioMap.contrasena
-            this.save(usuarioInstance)
+            usuarioInstance.cliente = clienteInstance
+            return this.save(usuarioInstance)
         } catch(e) {
             throw new Exception("Errores :${e.getMessage()}")
         }

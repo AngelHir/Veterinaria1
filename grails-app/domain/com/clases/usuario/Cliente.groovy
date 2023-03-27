@@ -2,11 +2,11 @@ package com.clases.usuario
 
 class Cliente {
 
-    static hasOne = [usuario: Usuario]
-
     static hasMany=[mascotas:Mascota]
 
     boolean activo=true
+
+    static hasOne = [usuario:Usuario]
 
     String nombre
 
@@ -19,11 +19,7 @@ class Cliente {
     String direccion
 
     static constraints = {
-        nombre nullable: false, blank: false
-        apellido nullable: false, blank: false
-        telefono nullable: false, blank: false
-        email nullable: false, blank: false
-        direccion nullable: false, blank: false
+
     }
 
     static mapping = {
